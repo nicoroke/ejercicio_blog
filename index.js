@@ -42,7 +42,7 @@ app.set("view engine", "ejs");
 
 app.get("/", async function (req, res) {
   const articles = await Article.findAll();
-  return res.send(articles);
+  return res.render("home", { articles });
 });
 
 app.get("/articulos", async function (req, res) {

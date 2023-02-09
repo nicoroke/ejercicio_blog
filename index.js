@@ -5,7 +5,7 @@ const port = 3000;
 app.set("view engine", "ejs");
 
 app.get("/", async function (req, res) {
-  return res.send("Home");
+  return res.render("home");
 });
 
 app.get("/admin", async function (req, res) {

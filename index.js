@@ -8,11 +8,11 @@ app.get("/", async function (req, res) {
   return res.render("home");
 });
 
-app.get("/admin", async function (req, res) {
+app.get("/articulos", async function (req, res) {
   return res.send("Admin");
 });
 
-app.get("/articulos", async function (req, res) {
+app.get("/admin", async function (req, res) {
   return res.send("Admin");
 });
 

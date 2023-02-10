@@ -13,55 +13,54 @@
   </head>
   <body class="container">
     <h2>Crear nuevo articulo</h2>
-    <form method="post" action="/usuarios">
+    <form method="post" action="/admin">
       <div class="mb-3">
-        <label for="name" class="form-label">Titulo</label>
+        <label for="title" class="form-label">Titulo</label>
         <input
           type="text"
           class="form-control"
-          name="name"
-          id="name"
+          name="title"
+          id="title"
           aria-describedby="emailHelp"
           placeholder="Ingresar nombre..."
         />
       </div>
       <div class="mb-3">
-        <label for="lastname" class="form-label">Contenido</label>
-        <input
-          type="text"
-          name="lastname"
+        <label for="content" class="form-label">Contenido</label>
+        <textarea
           class="form-control"
-          id="lastname"
-          placeholder="Ingresar contenido..."
-        />
+          id="exampleFormControlTextarea1"
+          rows="3"
+          name="content"
+        ></textarea>
       </div>
       <div class="mb-3">
-        <label for="age" class="form-label">Imagen</label>
+        <label for="image" class="form-label">Imagen</label>
         <input
           type="text"
-          name="age"
+          name="image"
           class="form-control"
-          id="age"
+          id="image"
           placeholder="Ingresar imagen..."
         />
       </div>
       <div class="mb-3">
-        <label for="age" class="form-label">Fecha</label>
+        <label for="date" class="form-label">Fecha</label>
         <input
           type="text"
-          name="age"
+          name="date"
           class="form-control"
-          id="age"
+          id="date"
           placeholder="Ingresar fecha..."
         />
       </div>
       <div class="mb-3">
-        <label for="age" class="form-label">Autor</label>
+        <label for="author" class="form-label">Autor</label>
         <input
           type="text"
-          name="age"
+          name="author"
           class="form-control"
-          id="age"
+          id="author"
           placeholder="Ingresar autor..."
         />
       </div>

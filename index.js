@@ -35,19 +35,25 @@ Article.init(
       type: DataTypes.STRING,
     },
   },
-  { sequelize, modelName: "article", timestamps: false }
+  { sequelize, modelName: "article", timestamps: false },
 );
 
 app.set("view engine", "ejs");
 
 app.get("/", async function (req, res) {
-  const article = await Article.findAll();
-  console.log(article);
-  return res.render("home", { article });
+  const articles = await Article.findAll();
+  console.log(articles);
+  return res.render("home", { articles });
 });
 
-app.get("/articulos", async function (req, res) {
-  return res.send("Admin");
+app.get("/articulo:id", async function (req, res) {
+  const article = await Article.findAll({
+    where: {
+      id: req.params.id,
+    },
+  });
+  console.log(article);
+  return res.render("article", { article });
 });
 
 app.get("/admin", async function (req, res) {

@@ -19,18 +19,12 @@
         background-image: url(https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
       "
     >
-      <h1 class="display-5 fw-bold">Hack the Blog</h1>
-      <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">El blog de Hack Academy</p>
-      </div>
-    </div>
-    <div class="container">
-      <% articles.forEach((element) => { %>
-      <a href="/articulo<%= element.id %>" class="nav-link"><h2><%= element.title %></h2></a>
+      <% article.forEach((element) => { %>
+      <h2><%= element.title %></h2>
       <p><%= element.author %> by <%= element.date %></p>
-      <hr />
       <% }) %>
     </div>
+    <p><%= article.content %></p>
 
     <div><%- include("partials/footer") %></div>
     <script

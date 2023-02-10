@@ -67,21 +67,34 @@ app.get("/admin/crear", async function (req, res) {
 });
 
 app.post("/admin", async function (req, res) {
-  console.log("XXXXXXXXXXXX" + req.body.title);
   const newArticle = await Article.create({
     title: `${req.body.title}`,
     content: `${req.body.content}`,
+    date: `${req.body.date}`,
     image: `${req.body.image}`,
     author: `${req.body.author}`,
   });
   return res.redirect("/admin");
 });
 
-app.post("/usuarios", async function (req, res) {
-  await db(
-    `INSERT INTO users (firstname, lastname, age) VALUES ("${req.body.name}", "${req.body.lastname}", ${req.body.age})`,
-  );
-  return res.redirect("/usuarios");
+app.get("/admin/editar/:id", async function (req, res) {
+  const article = await Article.findByPk(req.params.id);
+  res.render("edit", { article });
+});
+
+app.post("/admin/editar/:id", async function (req, res) {
+  // const newArticle = await Article.update(
+  //   {
+  //     title: `${req.body.title}`,
+  //     content: `${req.body.content}`,
+  //     date: `${req.body.date}`,
+  //     image: `${req.body.image}`,
+  //     author: `${req.body.author}`,
+  //   },
+  //   { where: { _id: req.params.id } },
+  // );
+  console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+  return res.redirect("/admin");
 });
 
 app.listen(port, () => console.log(`Servidor corriendo en el puerto ${port}`));

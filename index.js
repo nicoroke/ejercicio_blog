@@ -41,8 +41,9 @@ Article.init(
 app.set("view engine", "ejs");
 
 app.get("/", async function (req, res) {
-  const articles = await Article.findAll();
-  return res.render("home", { articles });
+  const article = await Article.findAll();
+  console.log(article);
+  return res.render("home", { article });
 });
 
 app.get("/articulos", async function (req, res) {

@@ -70,7 +70,10 @@ app.post("/admin", async function (req, res) {
   const newArticle = await Article.create({
     title: `${req.body.title}`,
     content: `${req.body.content}`,
-    date: `${req.body.date}`,
+    date: {
+      type: Sequelize.DATE,
+      field: "created_at",
+    },
     image: `${req.body.image}`,
     author: `${req.body.author}`,
   });
@@ -87,12 +90,22 @@ app.post("/admin/editar/:id", async function (req, res) {
     {
       title: `${req.body.title}`,
       content: `${req.body.content}`,
-      date: `${req.body.date}`,
+      date: {
+        type: Sequelize.DATE,
+        field: "updated_at",
+      },
       image: `${req.body.image}`,
       author: `${req.body.author}`,
     },
     { where: { id: req.params.id } },
   );
+  return res.redirect("/admin");
+});
+
+app.get("/admin/eliminar/:id", async function (req, res) {
+  const deleteArticle = await Article.destroy({
+    where: { id: req.params.id },
+  });
   return res.redirect("/admin");
 });
 

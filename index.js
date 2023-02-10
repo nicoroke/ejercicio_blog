@@ -83,17 +83,16 @@ app.get("/admin/editar/:id", async function (req, res) {
 });
 
 app.post("/admin/editar/:id", async function (req, res) {
-  // const newArticle = await Article.update(
-  //   {
-  //     title: `${req.body.title}`,
-  //     content: `${req.body.content}`,
-  //     date: `${req.body.date}`,
-  //     image: `${req.body.image}`,
-  //     author: `${req.body.author}`,
-  //   },
-  //   { where: { _id: req.params.id } },
-  // );
-  console.log("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+  const newArticle = await Article.update(
+    {
+      title: `${req.body.title}`,
+      content: `${req.body.content}`,
+      date: `${req.body.date}`,
+      image: `${req.body.image}`,
+      author: `${req.body.author}`,
+    },
+    { where: { id: req.params.id } },
+  );
   return res.redirect("/admin");
 });
 

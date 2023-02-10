@@ -19,12 +19,37 @@
         background-image: url(https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
       "
     >
-      <% article.forEach((element) => { %>
-      <h2><%= element.title %></h2>
-      <p><%= element.author %> by <%= element.date %></p>
-      <% }) %>
+      <h2><%= article.title %></h2>
+      <p><%= article.author %> by <%= article.date %></p>
     </div>
-    <p><%= article.content %></p>
+    <div class="container">
+      <p><%= article.content %></p>
+      <hr />
+    </div>
+    <div class="container">
+      <form>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Add your comment</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label"></label>
+          <input type="password" class="form-control" id="exampleInputPassword1" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="container" style="z-index: 0">
+      <h2>Comments(0)</h2>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe a suscipit ipsum.</p>
+      <p>Usuario</p>
+      <hr />
+    </div>
 
     <div><%- include("partials/footer") %></div>
     <script

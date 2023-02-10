@@ -26,7 +26,7 @@
     </div>
     <div class="container">
       <% articles.forEach((element) => { %>
-      <a href="/articulo<%= element.id %>" class="nav-link"><h2><%= element.title %></h2></a>
+      <a href="/articulo/<%= element.id %>" class="nav-link"><h2><%= element.title %></h2></a>
       <p><%= element.author %> by <%= element.date %></p>
       <hr />
       <% }) %>

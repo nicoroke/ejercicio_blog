@@ -59,4 +59,10 @@ app.get("/admin", async function (req, res) {
   return res.render("admin", { articles });
 });
 
+app.get("/admin/crear", async function (req, res) {
+  const articles = await Article.findAll();
+  console.log(articles);
+  return res.render("crear", { articles });
+});
+
 app.listen(port, () => console.log(`Servidor corriendo en el puerto ${port}`));

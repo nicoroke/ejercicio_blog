@@ -4,7 +4,7 @@ const { Article } = require("../models");
 // const { User } = require("../models");
 
 async function index(req, res) {
-  const articles = await Comment.findAll();
+  const articles = await Article.findAll();
   return res.render("home", { articles });
 }
 

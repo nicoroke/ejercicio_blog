@@ -1,4 +1,5 @@
 const { Sequelize } = require("sequelize");
+const articleSeeder = require("../seeders/articleSeeder");
 const userSeeder = require("../seeders/userSeeder");
 const commentSeeder = require("../seeders/commentSeeder");
 
@@ -17,6 +18,7 @@ Comment.initModel(sequelize);
 User.initModel(sequelize);
 
 (async function () {
+  await articleSeeder(Article);
   await userSeeder(User);
   await commentSeeder(Comment);
 })();

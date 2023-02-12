@@ -11,4 +11,6 @@ router.get("/admin/editar/:id", mainController.editForm);
 router.post("/admin/editar/:id", mainController.editArticle);
 router.get("/admin/eliminar/:id", mainController.deleteArticle);
 
+router.get("/test", mainController.test);
+
 module.exports = router;

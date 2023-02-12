@@ -7,10 +7,16 @@ const sequelize = new Sequelize("ha_ejercicio_21", "root", "root", {
 });
 
 const Article = require("./Article");
+const Comment = require("./Comment");
+const User = require("./User");
 
 Article.initModel(sequelize);
+Comment.initModel(sequelize);
+User.initModel(sequelize);
 
 module.exports = {
   sequelize,
   Article,
+  Comment,
+  User,
 };

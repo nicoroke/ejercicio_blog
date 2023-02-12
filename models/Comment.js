@@ -1,4 +1,4 @@
-const { Sequelize, Model, DataTypes } = require("sequelize");
+const { Model, DataTypes } = require("sequelize");
 
 class Comment extends Model {
   static initModel(sequelize) {
@@ -16,6 +16,7 @@ class Comment extends Model {
       {
         sequelize,
         modelName: "comment",
+        timestamps: false,
       },
     );
     return Comment;

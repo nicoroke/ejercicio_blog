@@ -1,23 +1,12 @@
 const { Sequelize } = require("sequelize");
 const { Article } = require("../models");
-const { Comment } = require("../models");
+
 // const { User } = require("../models");
 
 async function index(req, res) {
-  const articles = await Article.findAll();
-  console.log(articles);
+  const articles = await Comment.findAll();
   return res.render("home", { articles });
 }
-
-// TEST
-
-async function test(req, res) {
-  const comment = await Comment.findAll();
-  console.log(comment);
-  return res.send({ comment });
-}
-
-// TEST
 
 async function selectArticle(req, res) {
   const article = await Article.findByPk(req.params.id);
@@ -86,5 +75,4 @@ module.exports = {
   editForm,
   editArticle,
   deleteArticle,
-  test,
 };

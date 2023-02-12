@@ -1,10 +1,10 @@
 const { Sequelize } = require("sequelize");
-const { Article } = require("../models");
+const { Article, User } = require("../models");
 
 // const { User } = require("../models");
 
 async function index(req, res) {
-  const articles = await Article.findAll();
+  const articles = await Article.findAll({ include: User });
   return res.render("home", { articles });
 }
 

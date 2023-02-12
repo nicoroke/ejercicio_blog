@@ -1,5 +1,5 @@
 const { Sequelize } = require("sequelize");
-const { Article, User } = require("../models");
+const { Article, User, Comment } = require("../models");
 
 // const { User } = require("../models");
 
@@ -9,7 +9,7 @@ async function index(req, res) {
 }
 
 async function selectArticle(req, res) {
-  const article = await Article.findByPk(req.params.id);
+  const article = await Article.findByPk(req.params.id, { include: Comment });
   return res.render("article", { article });
 }
 

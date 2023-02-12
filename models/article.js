@@ -13,20 +13,9 @@ class Article extends Model {
           allowNull: false,
           type: DataTypes.STRING,
         },
-        content: { allowNull: false, type: DataTypes.STRING },
-        date: {
-          type: DataTypes.DATEONLY,
-        },
-        author: {
-          allowNull: false,
-          type: DataTypes.STRING,
-        },
-        comments: {
-          allowNull: true,
-          type: DataTypes.STRING,
-        },
+        content: { allowNull: false, type: DataTypes.TEXT },
       },
-      { sequelize, modelName: "article", timestamps: false },
+      { sequelize, modelName: "article" },
     );
     return Article;
   }

@@ -1,8 +1,4 @@
 const { Sequelize } = require("sequelize");
-const articleSeeder = require("../seeders/articleSeeder");
-const userSeeder = require("../seeders/userSeeder");
-const commentSeeder = require("../seeders/commentSeeder");
-
 const sequelize = new Sequelize("ha_ejercicio_21", "root", "root", {
   host: "localhost",
   dialect: "mysql",
@@ -16,12 +12,6 @@ const User = require("./User");
 Article.initModel(sequelize);
 Comment.initModel(sequelize);
 User.initModel(sequelize);
-
-(async function () {
-  await articleSeeder(Article);
-  await userSeeder(User);
-  await commentSeeder(Comment);
-})();
 
 module.exports = {
   sequelize,

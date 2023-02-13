@@ -6,4 +6,13 @@ async function getComments(req, res) {
   return res.send({ comments });
 }
 
-module.exports = { getComments };
+async function createComment(req, res) {
+  let articleNumber = req.params.id;
+  const newComment = await Comment.create({
+    content: `${req.body.content}`,
+    articleId: `${articleNumber}`,
+  });
+  return res.redirect(`/articulo/${articleNumber}`);
+}
+
+module.exports = { getComments, createComment };

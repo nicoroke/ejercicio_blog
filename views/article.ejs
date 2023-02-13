@@ -20,35 +20,44 @@
       "
     >
       <h2><%= article.title %></h2>
-      <p><%= article.author %> by <%= article.date %></p>
+      <p>Created by</p>
+      <p><%= article.user.firstname %> <%= article.user.lastname %></p>
     </div>
     <div class="container">
       <p><%= article.content %></p>
       <hr />
     </div>
     <div class="container">
-      <form>
+      <form method="post" action="/articulo">
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Add your comment</label>
+          <label for="firstname" class="form-label">Name</label>
           <input
-            type="email"
+            type="text"
+            name="firstname"
             class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            id="firstname"
+            placeholder="Ingresar nombre"
           />
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label"></label>
-          <input type="password" class="form-control" id="exampleInputPassword1" />
+          <label for="content" class="form-label">Contenido</label>
+          <textarea class="form-control" id="content" rows="3" name="content"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Send</button>
       </form>
     </div>
     <div class="container" style="z-index: 0">
-      <h2>Comments(0)</h2>
-      <p><%= console.log(article.comments) %></p>
-      <p>Usuario</p>
+      <% let commentCounter = 0 %> <% comments.forEach((element) => { %> <% commentCounter++ %> <%
+      }) %>
+      <h2>Comments(<%= commentCounter %>)</h2>
       <hr />
+    </div>
+    <div class="container">
+      <% comments.reverse() %> <% comments.forEach((element) => { %>
+      <p><%= element.content %></p>
+      <p>by <%= element.user.firstname %> <%= element.user.lastname %></p>
+      <hr />
+      <% }) %>
     </div>
 
     <div><%- include("partials/footer") %></div>

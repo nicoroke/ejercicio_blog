@@ -9,8 +9,9 @@ async function index(req, res) {
 }
 
 async function selectArticle(req, res) {
-  const article = await Article.findByPk(req.params.id, { include: Comment });
-  return res.render("article", { article });
+  const article = await Article.findByPk(req.params.id, { include: User });
+  const comments = await Comment.findAll({ where: { articleId: req.params.id }, include: User });
+  return res.render("article", { article, comments });
 }
 
 async function indexAdmin(req, res) {

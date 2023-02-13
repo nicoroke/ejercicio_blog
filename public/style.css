@@ -21,3 +21,8 @@ body {
   transform: translate(-50%, -50%);
   color: white;
 }
+footer {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  background-color: black;
+}

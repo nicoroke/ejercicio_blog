@@ -3,7 +3,7 @@ const { Article } = require("../models");
 
 module.exports = async () => {
   const articles = [];
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 9; i++) {
     articles.push({
       title: faker.lorem.sentence(3),
       content: faker.lorem.paragraphs(5),

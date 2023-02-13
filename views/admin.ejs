@@ -38,8 +38,8 @@
             <td><%= element.title %></td>
             <td><%= element.content %></td>
             <td><%= %></td>
-            <td><%= element.date %></td>
-            <td><%= element.author %></td>
+            <td><%= element.createdAt %></td>
+            <td><%= element.user.firstname %> <%= element.user.lastname %></td>
             <td>
               <a href="/admin/editar/<%=element.id%>" class="btn btn-primary m-1">Editar</a
               ><a href="admin/eliminar/<%=element.id%>" class="btn btn btn-danger m-1">

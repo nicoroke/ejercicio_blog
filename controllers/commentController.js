@@ -1,4 +1,4 @@
-const { Comment, Article } = require("../models");
+const { Comment, Article, User } = require("../models");
 
 async function getComments(req, res) {
   const comments = await Comment.findAll({ include: Article });
@@ -7,11 +7,15 @@ async function getComments(req, res) {
 }
 
 async function createComment(req, res) {
+  const user = await User.findOne({ where: { firstname: req.body.firstname } });
+  console.log(user);
+  console.log("USER NAME:  " + user.firstname);
+  console.log("USER ID:  " + user.id);
   let articleNumber = req.params.id;
   const newComment = await Comment.create({
     content: `${req.body.content}`,
     articleId: `${req.params.id}`,
-    userId: `${req.params.id}`,
+    userId: `${user.id}`,
   });
   return res.redirect(`/articulo/${articleNumber}`);
 }

@@ -36,6 +36,7 @@ async function createArticle(req, res) {
     },
     image: `${req.body.image}`,
     author: `${req.body.author}`,
+    userId: 1,
   });
   return res.redirect("/admin");
 }

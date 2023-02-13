@@ -26,6 +26,7 @@
       <% articles.reverse() %> <% articles.forEach((element) => { %>
       <a href="/articulo/<%= element.id %>" class="nav-link"><h2><%= element.title %></h2></a>
       <p>Created by <%= element.user.firstname %> <%= element.user.lastname %></p>
+      <p><%= element.createdAt %></p>
       <hr />
       <% }) %>
     </div>

@@ -10,7 +10,8 @@ async function createComment(req, res) {
   let articleNumber = req.params.id;
   const newComment = await Comment.create({
     content: `${req.body.content}`,
-    articleId: `${articleNumber}`,
+    articleId: `${req.params.id}`,
+    userId: `${req.params.id}`,
   });
   return res.redirect(`/articulo/${articleNumber}`);
 }

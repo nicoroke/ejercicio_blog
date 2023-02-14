@@ -8,6 +8,7 @@ const app = express();
 const port = 3000;
 const routes = require("./routes/articleRoutes");
 const dbInitialSetup = require("./dbInitialSetup");
+const { User } = require("./models");
 
 app.use(
   session({
@@ -17,7 +18,28 @@ app.use(
   }),
 );
 app.use(passport.session());
-// app.use(new LocalStrategy(authenticator))
+passport.use(
+  new LocalStrategy(async function (email, password, done) {
+    try {
+      const user = await User.findOne({ where: { email } });
+      console.log(user);
+    } catch (error) {
+      return done(error);
+    }
+  }),
+);
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await User.findByPk(id);
+    done(null, user);
+  } catch (error) {
+    done(error, null);
+  }
+});
+
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");

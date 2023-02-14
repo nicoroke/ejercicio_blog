@@ -1,15 +1,12 @@
 const { Sequelize } = require("sequelize");
 const { Article, User, Comment } = require("../models");
 
-// const { User } = require("../models");
-
 async function index(req, res) {
   const articles = await Article.findAll({ include: User });
   return res.render("home", { articles });
 }
 
 async function selectArticle(req, res) {
-  // CHANGES!!!!!
   let articleNumber = req.params.id;
   const article = await Article.findByPk(req.params.id, { include: User });
   const comments = await Comment.findAll({ where: { articleId: req.params.id }, include: User });

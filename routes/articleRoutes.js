@@ -15,6 +15,10 @@ router.get("/admin/editar/:id", mainController.editForm);
 router.post("/admin/editar/:id", mainController.editArticle);
 router.get("/admin/eliminar/:id", mainController.deleteArticle);
 
-router.get("/users", userController.getUsers);
+router.get("/registro", userController.createForm);
+router.post("/registro", userController.storeUser);
+router.get("/login", userController.loginForm);
+router.post("/login", userController.authenticate);
+router.get("/logout", userController.logout);
 
 module.exports = router;

@@ -15,6 +15,14 @@ class User extends Model {
         lastname: {
           type: DataTypes.STRING,
         },
+        email: {
+          type: DataTypes.STRING(100),
+          allowNull: false,
+        },
+        password: {
+          type: DataTypes.STRING(60),
+          allowNull: false,
+        },
       },
       {
         sequelize,

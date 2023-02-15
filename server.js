@@ -2,8 +2,10 @@ require("dotenv").config();
 
 const express = require("express");
 const session = require("express-session");
+const cookieParser = require("cookie-parser");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const flash = require("express-flash");
 const app = express();
 const port = 3000;
 const routes = require("./routes/articleRoutes");
@@ -11,6 +13,9 @@ const dbInitialSetup = require("./dbInitialSetup");
 const makeUserAvailableInViews = require("./middlewares/makeUserAvailableInViews");
 const { User } = require("./models");
 
+app.use(cookieParser("keyboard cat"));
+app.use(session({ cookie: { maxAge: 60000 } }));
+app.use(flash());
 app.use(
   session({
     secret: process.env.APP_SECRET,

@@ -34,6 +34,9 @@
         <input type="text" class="d-none" name="referer" value="<%= referer %>" />
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
+      <% if (messages.info) { %>
+      <p><%= messages.info %></p>
+      <% } %>
     </div>
     <%- include("partials/footer") %>
     <script>

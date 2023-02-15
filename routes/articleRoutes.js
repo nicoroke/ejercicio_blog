@@ -3,7 +3,6 @@ const router = express.Router();
 const mainController = require("../controllers/mainController");
 const commentController = require("../controllers/commentController");
 const userController = require("../controllers/userController");
-const authenticatorController = require("../controllers/authenticatorController");
 const ensureAuthenticated = require("../middlewares/ensureAuthenticated");
 
 router.get("/", mainController.index);
@@ -19,8 +18,8 @@ router.get("/admin/eliminar/:id", ensureAuthenticated, mainController.deleteArti
 
 router.get("/registro", userController.createForm);
 router.post("/registro", userController.createUser);
-router.get("/login", authenticatorController.index);
-router.post("/login", authenticatorController.login);
+router.get("/login", userController.loginForm);
+router.post("/login", userController.authenticate);
 router.get("/logout", userController.logout);
 
 module.exports = router;

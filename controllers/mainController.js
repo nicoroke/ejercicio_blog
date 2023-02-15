@@ -15,14 +15,10 @@ async function selectArticle(req, res) {
 
 async function indexAdmin(req, res) {
   if (req.isAuthenticated()) {
-    const articles = await Article.findAll({ include: User });
+    const articles = await Article.findAll({ include: User, where: { userId: req.user.id } });
     return res.render("admin", { articles });
   } else {
-<<<<<<< Updated upstream
-    return res.render("user-login");
-=======
     res.redirect("/login");
->>>>>>> Stashed changes
   }
 }
 
@@ -40,15 +36,18 @@ async function createArticle(req, res) {
       field: "created_at",
     },
     image: `${req.body.image}`,
-    author: `${req.body.author}`,
-    userId: 1,
+    userId: req.user.id,
   });
   return res.redirect("/admin");
 }
 
 async function editForm(req, res) {
   const article = await Article.findByPk(req.params.id);
-  res.render("edit", { article });
+  if (req.user.id === article.userId) {
+    res.render("edit", { article });
+  } else {
+    res.redirect("/admin");
+  }
 }
 
 async function editArticle(req, res) {
@@ -69,9 +68,12 @@ async function editArticle(req, res) {
 }
 
 async function deleteArticle(req, res) {
-  const deleteArticle = await Article.destroy({
-    where: { id: req.params.id },
-  });
+  const article = await Article.findByPk(req.params.id);
+  if (req.user.id === article.userId) {
+    const deleteArticle = await Article.destroy({
+      where: { id: req.params.id },
+    });
+  }
   return res.redirect("/admin");
 }
 

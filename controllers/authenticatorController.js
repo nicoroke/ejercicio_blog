@@ -10,11 +10,13 @@ async function login(req, res) {
   const user = await User.findOne({ where: { email: req.body.email } });
 
   const isValidPassword = await bcrypt.compare(req.body.password, user.password);
-  if (isValidPassword)
+  if (isValidPassword) {
     req.login(user, () => {
-      res.redirect("/");
+      res.redirect("/admin");
     });
-  else res.redirect("/login");
+  } else {
+    res.redirect("/login");
+  }
 }
 
 module.exports = { index, login };

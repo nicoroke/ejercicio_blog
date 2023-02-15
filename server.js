@@ -19,26 +19,6 @@ app.use(
 );
 app.use(passport.session());
 passport.use(
-<<<<<<< Updated upstream
-  new LocalStrategy(async function (email, password, done) {
-    try {
-      const user = await User.findOne({ where: { email } });
-      console.log(user);
-    } catch (error) {
-      return done(error);
-    }
-  }),
-);
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
-passport.deserializeUser(async (id, done) => {
-  try {
-    const user = await User.findByPk(id);
-    done(null, user);
-  } catch (error) {
-    done(error, null);
-=======
   new LocalStrategy(async (email, password, cb) => {
     try {
       const user = await User.findOne({ where: { email } });
@@ -67,7 +47,6 @@ passport.deserializeUser(async (id, cb) => {
     cb(null, user); // Usuario queda disponible en req.user.
   } catch (err) {
     cb(err, user);
->>>>>>> Stashed changes
   }
 });
 
@@ -76,6 +55,6 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
 app.use(routes);
-/* dbInitialSetup(); */
+// dbInitialSetup();
 
 app.listen(port, () => console.log(`Servidor corriendo en el puerto ${port}`));

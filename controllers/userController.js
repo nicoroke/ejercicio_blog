@@ -5,7 +5,9 @@ async function getUsers(req, res) {
   console.log(users);
   return res.send({ users });
 }
-async function createForm(req, res) {}
+async function createForm(req, res) {
+  res.render("user-register");
+}
 async function storeUser(req, res) {}
 async function loginForm(req, res) {}
 async function authenticate(req, res) {}

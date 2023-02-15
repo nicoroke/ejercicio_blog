@@ -18,7 +18,11 @@ async function indexAdmin(req, res) {
     const articles = await Article.findAll({ include: User });
     return res.render("admin", { articles });
   } else {
+<<<<<<< Updated upstream
     return res.render("user-login");
+=======
+    res.redirect("/login");
+>>>>>>> Stashed changes
   }
 }
 

@@ -19,6 +19,11 @@ class User extends Model {
           type: DataTypes.STRING(100),
           allowNull: false,
         },
+        role: {
+          type: DataTypes.STRING(100),
+          defaultValue: "user",
+          allowNull: false,
+        },
         password: {
           type: DataTypes.STRING(60),
           allowNull: false,

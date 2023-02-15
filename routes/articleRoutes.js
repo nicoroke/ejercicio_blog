@@ -5,43 +5,22 @@ const commentController = require("../controllers/commentController");
 const userController = require("../controllers/userController");
 const authenticatorController = require("../controllers/authenticatorController");
 const ensureAuthenticated = require("../middlewares/ensureAuthenticated");
-const makeUserAvailableInViews = require("../middlewares/makeUserAvailableInViews");
 
 router.get("/", mainController.index);
-router.get("/articulo/:id", makeUserAvailableInViews, mainController.selectArticle);
-router.post("/articulo/:id", makeUserAvailableInViews, commentController.createComment);
+router.get("/articulo/:id", mainController.selectArticle);
+router.post("/articulo/:id", commentController.createComment);
 
-router.get("/admin", ensureAuthenticated, makeUserAvailableInViews, mainController.indexAdmin);
-router.get(
-  "/admin/crear",
-  ensureAuthenticated,
-  makeUserAvailableInViews,
-  mainController.createForm,
-);
-router.post("/admin", ensureAuthenticated, makeUserAvailableInViews, mainController.createArticle);
-router.get(
-  "/admin/editar/:id",
-  ensureAuthenticated,
-  makeUserAvailableInViews,
-  mainController.editForm,
-);
-router.post(
-  "/admin/editar/:id",
-  ensureAuthenticated,
-  makeUserAvailableInViews,
-  mainController.editArticle,
-);
-router.get(
-  "/admin/eliminar/:id",
-  ensureAuthenticated,
-  makeUserAvailableInViews,
-  mainController.deleteArticle,
-);
+router.get("/admin", ensureAuthenticated, mainController.indexAdmin);
+router.get("/admin/crear", ensureAuthenticated, mainController.createForm);
+router.post("/admin", ensureAuthenticated, mainController.createArticle);
+router.get("/admin/editar/:id", ensureAuthenticated, mainController.editForm);
+router.post("/admin/editar/:id", ensureAuthenticated, mainController.editArticle);
+router.get("/admin/eliminar/:id", ensureAuthenticated, mainController.deleteArticle);
 
-router.get("/registro", makeUserAvailableInViews, userController.createForm);
+router.get("/registro", userController.createForm);
 router.post("/registro", userController.createUser);
-router.get("/login", makeUserAvailableInViews, authenticatorController.index);
+router.get("/login", authenticatorController.index);
 router.post("/login", authenticatorController.login);
-router.get("/logout", makeUserAvailableInViews, userController.logout);
+router.get("/logout", userController.logout);
 
 module.exports = router;

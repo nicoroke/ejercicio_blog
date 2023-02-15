@@ -15,7 +15,7 @@
       </button>
       <div>
         <a href="/admin" class="btn btn-primary" style="margin-left: auto" type="submit">Admin</a>
-        <% if(isAuthenticated) { %>
+        <% if(user) { %>
         <a href="/logout" class="btn btn-primary" style="margin-left: auto" type="submit">Logout</a>
         <% } %>
       </div>

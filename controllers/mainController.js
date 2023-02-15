@@ -10,8 +10,7 @@ async function selectArticle(req, res) {
   let articleNumber = req.params.id;
   const article = await Article.findByPk(req.params.id, { include: User });
   const comments = await Comment.findAll({ where: { articleId: req.params.id }, include: User });
-  const isAuthenticated = req.isAuthenticated();
-  return res.render("article", { article, comments, articleNumber, isAuthenticated });
+  return res.render("article", { article, comments, articleNumber });
 }
 
 async function indexAdmin(req, res) {

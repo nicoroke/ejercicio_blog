@@ -8,6 +8,7 @@ const app = express();
 const port = 3000;
 const routes = require("./routes/articleRoutes");
 const dbInitialSetup = require("./dbInitialSetup");
+const makeUserAvailableInViews = require("./middlewares/makeUserAvailableInViews");
 const { User } = require("./models");
 
 app.use(
@@ -50,6 +51,7 @@ passport.deserializeUser(async (id, cb) => {
   }
 });
 
+app.use(makeUserAvailableInViews);
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");

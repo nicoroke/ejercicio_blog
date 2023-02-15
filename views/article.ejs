@@ -13,7 +13,7 @@
     />
   </head>
   <body>
-    <%- include("partials/nav", { isAuthenticated }) %>
+    <%- include("partials/nav") %>
     <div class="hero">
       <div class="px-4 py-5 hero-text">
         <h1><%= article.title %></h1>
@@ -25,7 +25,7 @@
       <p><%= article.content %></p>
       <hr />
     </div>
-    <% if(isAuthenticated) { %>
+    <% if(user) { %>
     <div class="container" id="formDiv" name="formDiv">
       <form method="post" action="/articulo/<%= articleNumber%>">
         <div class="mb-3">

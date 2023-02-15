@@ -12,7 +12,7 @@
     />
   </head>
   <body>
-    <%- include("partials/nav"/* , {user}) */)%>
+    <%- include("partials/nav", { isAuthenticated }) %>
     <div class="container">
       <h2>Crear nuevo articulo</h2>
       <form method="post" action="/admin">

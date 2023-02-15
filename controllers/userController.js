@@ -1,4 +1,5 @@
 const { User, Article } = require("../models");
+const bcrypt = require("bcryptjs");
 
 async function getUsers(req, res) {
   const users = await User.findAll({ include: Article });
@@ -8,9 +9,24 @@ async function getUsers(req, res) {
 async function createForm(req, res) {
   res.render("user-register");
 }
-async function storeUser(req, res) {}
+async function createUser(req, res) {
+  await User.create({
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    email: req.body.email,
+    password: await bcrypt.hash(`${req.body.password}`, 8),
+  });
+  res.redirect("/");
+}
 async function loginForm(req, res) {}
 async function authenticate(req, res) {}
-async function logout(req, res) {}
+async function logout(req, res) {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+}
 
-module.exports = { getUsers, createForm, storeUser, loginForm, authenticate, logout };
+module.exports = { getUsers, createForm, createUser, loginForm, authenticate, logout };

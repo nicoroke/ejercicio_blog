@@ -7,21 +7,17 @@ async function getComments(req, res) {
 }
 
 async function createComment(req, res) {
-  /*  if (req.isAuthenticated()) {
-    return next();
+  if (req.isAuthenticated()) {
+    let articleNumber = req.params.id;
+    const newComment = await Comment.create({
+      content: `${req.body.content}`,
+      articleId: `${req.params.id}`,
+      userId: req.user.id,
+    });
+    return res.redirect(`/articulo/${articleNumber}`);
   } else {
-    req.session.redirectTo = req.query.redirectTo;
-    res.redirect("/login");
-  } */
-
-  const user = await User.findOne({ where: { firstname: req.body.firstname } });
-  let articleNumber = req.params.id;
-  const newComment = await Comment.create({
-    content: `${req.body.content}`,
-    articleId: `${req.params.id}`,
-    userId: `${user.id}`,
-  });
-  return res.redirect(`/articulo/${articleNumber}`);
+    return res.redirect("/login");
+  }
 }
 
 module.exports = { getComments, createComment };

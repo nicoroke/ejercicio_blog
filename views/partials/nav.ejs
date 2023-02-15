@@ -13,8 +13,11 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <a href="/admin" class="btn btn-primary" style="margin-left: auto" type="submit"> Admin </a>
+      <div>
+        <a href="/admin" class="btn btn-primary" style="margin-left: auto" type="submit">Admin</a>
+        <% if(isAuthenticated) { %>
+        <a href="/logout" class="btn btn-primary" style="margin-left: auto" type="submit">Logout</a>
+        <% } %>
       </div>
     </div>
   </nav>

@@ -15,9 +15,10 @@ module.exports = (app) => {
   app.use(passport.session());
 
   passport.use(
-    new LocalStrategy(async (email, password, cb) => {
+    new LocalStrategy({ usernameField: "email" }, async (email, password, cb) => {
       try {
         const user = await User.findOne({ where: { email } });
+        console.log(user);
         if (!user) {
           console.log("Nombre de usuario no existe.");
           return cb(null, false, { message: "Credenciales incorrectas." });

@@ -20,8 +20,8 @@ class User extends Model {
           allowNull: false,
         },
         role: {
-          type: DataTypes.STRING(100),
-          defaultValue: "user",
+          type: DataTypes.INTEGER,
+          defaultValue: 10, // 10 => "lector", 20 => escritor, 30 => editor, 40 => administrador
           allowNull: false,
         },
         password: {

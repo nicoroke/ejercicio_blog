@@ -12,7 +12,14 @@ const dbInitialSetup = require("./dbInitialSetup");
 const makeUserAvailableInViews = require("./middlewares/makeUserAvailableInViews");
 
 app.use(cookieParser("keyboard cat"));
-app.use(session({ cookie: { maxAge: 60000 } }));
+app.use(
+  session({
+    cookie: { maxAge: 60000 },
+    secret: process.env.APP_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  }),
+);
 app.use(flash());
 
 passport(app);

@@ -19,7 +19,7 @@ router.get("/admin/eliminar/:id", ensureAuthenticated, mainController.deleteArti
 router.get("/registro", userController.createForm);
 router.post("/registro", userController.createUser);
 router.get("/login", userController.loginForm);
-router.post("/login", userController.authenticate);
+router.post("/login", userController.passportAuth, userController.authenticate);
 router.get("/logout", userController.logout);
 
 module.exports = router;
